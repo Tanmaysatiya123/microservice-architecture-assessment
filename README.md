@@ -72,3 +72,79 @@ Order	POST	/orders	Create Order
 Order	GET	/orders/{id}	Retrieve Order
 Order	PUT	/orders/{id}	Update Order
 Order	DELETE	/orders/{id}	Delete Order
+
+
+🔹 API Endpoints (with curl Examples)
+Here are some curl commands you can use to test the API manually:
+
+🟣 UserService
+➥ Create User
+
+shell
+Copy
+Edit
+curl -X POST "http://localhost:8081/users" -H "Content-Type: application/json" -d '{
+  "username": "john.doe",
+  "email": "john.doe@example.com",
+  "password": "securePass123"
+}'
+➥ Retrieve User by ID
+
+shell
+Copy
+Edit
+curl -X GET "http://localhost:8081/users/1"
+➥ Update User by ID
+
+shell
+Copy
+Edit
+curl -X PUT "http://localhost:8081/users/1" -H "Content-Type: application/json" -d '{
+  "username": "johnny.doe",
+  "email": "johnny.doe@example.com",
+  "password": "newPass123"
+}'
+➥ Delete User by ID
+
+shell
+Copy
+Edit
+curl -X DELETE "http://localhost:8081/users/1"
+🟣 OrderService
+➥ Create Order
+
+shell
+Copy
+Edit
+curl -X POST "http://localhost:8082/orders" -H "Content-Type: application/json" -d '{
+  "userId": 1,
+  "product": "Tablet",
+  "quantity": 2,
+  "price": 500
+}'
+➥ Retrieve Order by ID
+
+shell
+Copy
+Edit
+curl -X GET "http://localhost:8082/orders/1"
+➥ Update Order by ID
+
+shell
+Copy
+Edit
+curl -X PUT "http://localhost:8082/orders/1" -H "Content-Type: application/json" -d '{
+  "userId": 1,
+  "product": "Tablet Pro",
+  "quantity": 1,
+  "price": 800
+}'
+➥ Delete Order by ID
+
+shell
+Copy
+Edit
+curl -X DELETE "http://localhost:8082/orders/1"
+✅ Tip:
+Make sure UserService is up first (since OrderService depends on it).
+Then start OrderService.
